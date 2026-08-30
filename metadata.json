@@ -1,0 +1,6 @@
+{
+  "name": "VocalPrompt",
+  "description": "A voice recognition teleprompter with script upload and database abilities.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
