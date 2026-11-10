@@ -1,1 +1,161 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/instrument-serif@latest/latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/dm-sans@latest/latin-700-normal.woff2") format("woff2");
+}
+
+@theme {
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #07080a;
+  --color-paper: #ece7dc;
+  --color-gold: #e8c15a;
+  --color-muted: #8a8170;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.prompter-word {
+  display: inline-block;
+  margin-inline: 0.12em;
+  margin-bottom: 0.2em;
+  color: #d7d0c2;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease,
+    opacity 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.prompter-word.word-past {
+  color: #5c564a;
+  opacity: 0.72;
+}
+
+.prompter-word.word-active {
+  color: #07080a;
+  background: #e8c15a;
+  border-radius: 0.18em;
+  padding-inline: 0.12em;
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 0 24px rgba(232, 193, 90, 0.35);
+}
+
+.prompter-word.word-future {
+  color: #d7d0c2;
+}
+
+.prompter-mirror {
+  transform: scaleX(-1);
+}
+
+.prompter-fade-mask {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+}
+
+@keyframes countdown-pop {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.countdown-digit {
+  animation: countdown-pop 420ms ease-out;
+}
+
+@keyframes pulse-mic {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 193, 90, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(232, 193, 90, 0);
+  }
+}
+
+.mic-live {
+  animation: pulse-mic 1.6s ease-out infinite;
+}

@@ -23,5 +23,13 @@ export interface ReadingProfile {
   lineHeight: number;
   contentWidth: string;
   micSensitivity?: number;
+  mirror?: boolean;
   createdAt?: any;
+}
+
+export interface AppUser {
+  uid: string;
+  displayName: string | null;
+  email: string | null;
+  isGuest: boolean;
 }
